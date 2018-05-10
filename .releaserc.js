@@ -3,6 +3,7 @@ module.exports = {
     prepare: [],
     publish: [
         '@semantic-release/github',
+        '@semantic-release/npm',
         './plugin.js',
     ],
     analyzeCommits: {
