@@ -1,10 +1,26 @@
 const { execSync } = require('child_process');
 const { parse } = require('dotenv');
-const { readFileSync } = require('fs');
+const { readFileSync, existsSync } = require('fs');
+const yaml = require('yenv');
 
-const env = parse(readFileSync('.env'));
+let env;
 
-const dockerRepoName = `${env.REACT_APP_NAME}`;
+if (existsSync('.env')) {
+    env = parse(readFileSync('.env'));
+} else if (existsSync('env.yaml')) {
+    env = yenv();
+}
+
+env = {
+    ...(env || {}),
+    ...process.env,
+};
+
+const dockerRepoName = env.REACT_APP_NAME || env.APP_NAME;
+
+if (dockerRepoName == null) {
+    throw new Error("APP_NAME or REACT_APP_NAME not found in env");
+}
 
 async function publish(pluginConfig, {nextRelease: {version, notes}, logger}) {
     logger.log("Building Docker Image");

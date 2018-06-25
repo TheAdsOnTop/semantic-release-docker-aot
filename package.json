@@ -12,7 +12,8 @@
         "url": "git+https://github.com/theadsontop/semantic-release-docker-aot.git"
     },
     "dependencies": {
-        "dotenv": "^5.0.1"
+        "dotenv": "^5.0.1",
+        "yenv": "^2.1.0"
     },
     "devDependencies": {
         "conventional-changelog-aot": "^1.0.1",
