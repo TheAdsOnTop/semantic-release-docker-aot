@@ -1,7 +1,7 @@
 const { execSync } = require('child_process');
 const { parse } = require('dotenv');
 const { readFileSync, existsSync } = require('fs');
-const yaml = require('yenv');
+const yenv = require('yenv');
 
 let env;
 
