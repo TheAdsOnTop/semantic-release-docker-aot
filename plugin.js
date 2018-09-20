@@ -16,7 +16,7 @@ env = {
     ...process.env,
 };
 
-const dockerRepoName = env.REACT_APP_NAME || env.APP_NAME;
+const dockerRepoName = env.IMAGE_NAME || env.REACT_APP_NAME || env.APP_NAME;
 
 if (dockerRepoName == null) {
     throw new Error("APP_NAME or REACT_APP_NAME not found in env");
